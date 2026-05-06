@@ -1,104 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-site-verification" content="YOUR_CODE_HERE" />
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ARYAN_OS_v6_FINAL</title>
+    <title>ARYAN OS v7.0 - PATNA CITY CENTRAL</title>
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
 <body>
-    <canvas id="matrix-canvas"></canvas>
+    <canvas id="matrix-bg"></canvas>
 
-    <header class="main-header">
-        <div class="logo">ARYAN_OS <span class="v-tag">v6.0_ULTRA</span></div>
-        <div class="menu-icon" onclick="toggleSettings()"><ion-icon name="grid"></ion-icon></div>
-        <div id="settings-dropdown" class="dropdown-content">
-            <a href="#" onclick="runScanner()">🛡️ Deep Scan</a>
-            <a href="#" onclick="toggleFullScreen()">🖥️ Full Screen</a>
-            <a href="#" onclick="location.reload()">🔄 Reboot</a>
+    <div id="os-container">
+        <header>
+            <div class="logo">ARYAN OS <span>v7.0</span></div>
+            <div id="clock">00:00:00</div>
+        </header>
+
+        <div id="projector-alert" class="hidden">
+            <div class="glitch-text">TARGET: PATNA CITY CENTRAL SCHOOL</div>
+            <div class="sub-text">NETWORK: patnacitycentralschool | PIN: 800007</div>
         </div>
-    </header>
 
-    <main class="container">
-        <section id="home" class="page active">
-            <div class="profile-area">
-                <div class="avatar-glow"><img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Aryan" alt="Profile"></div>
-                <h2 style="margin-top:10px;">MASTER_ARYAN</h2>
-                <p class="status-text">● NEURAL_LINK_ESTABLISHED</p>
-            </div>
+        <main id="main-grid">
+            <section class="panel system-info">
+                <h3>SYSTEM INTEL</h3>
+                <div class="stat-item">IP: <span id="ip-addr">Detecting...</span></div>
+                <div class="stat-item">BATTERY: <span id="bat-level">--%</span></div>
+                <div class="stat-item">OS TYPE: <span id="dev-type">Scanning...</span></div>
+                <div class="stat-item">LOCATION: <span id="loc-trace">Patna, BR</span></div>
+            </section>
 
-            <div class="feature-grid">
-                <div class="card glass" onclick="showPage('terminal')"><ion-icon name="terminal"></ion-icon><p>EXEC</p></div>
-                <div class="card glass" onclick="showPage('neural')"><ion-icon name="headset"></ion-icon><p>NEURAL</p></div>
-                <div class="card glass" onclick="showPage('network')"><ion-icon name="globe"></ion-icon><p>PORTS</p></div>
-                <div class="card glass" onclick="showPage('decrypt')"><ion-icon name="eye-off"></ion-icon><p>DECRYPT</p></div>
-                <div class="card glass" onclick="showPage('compiler')"><ion-icon name="code-slash"></ion-icon><p>ACADEMY</p></div>
-                <div class="card glass" onclick="showPage('logic')"><ion-icon name="git-network"></ion-icon><p>LOGIC</p></div>
-                <div class="card glass" onclick="showPage('qr')"><ion-icon name="qr-code"></ion-icon><p>QR_GEN</p></div>
-                <div class="card glass" onclick="showPage('binary')"><ion-icon name="code-working"></ion-icon><p>BINARY</p></div>
-                <div class="card glass" onclick="showPage('transmit')"><ion-icon name="radio"></ion-icon><p>SIGNAL</p></div>
-            </div>
-
-            <div class="glass stats-card">
-                <p>CORE_TEMP: <span id="temp-val" class="neon-text">32°C</span> | IP: <span class="neon-text">192.162.X.X</span></p>
-                <div class="progress-container"><div id="temp-bar" class="progress" style="width:40%; background:orange;"></div></div>
-                <p style="margin-top:10px;">BATTERY: <span id="battery-level">--%</span></p>
-                <div class="progress-container"><div id="battery-bar" class="progress"></div></div>
-            </div>
-        </section>
-
-        <section id="terminal" class="page">
-            <div class="glass"><h3>SYSTEM_CONSOLE</h3><div id="console-output" class="console-box">> root@aryan:~#</div></div>
-        </section>
-
-        <section id="neural" class="page">
-            <div class="glass chat-container">
-                <h3>NEURAL_INTERFACE</h3>
-                <div id="chat-box" class="console-box"></div>
-                <input type="text" id="chat-input" class="pro-input" placeholder="Enter command..." onchange="sendNeuralMsg()">
-            </div>
-        </section>
-
-        <section id="network" class="page">
-            <div class="glass"><h3>PORT_SCANNER</h3><div id="port-log" class="console-box"></div><button class="pro-btn" onclick="runPortScan()">START_SCAN</button></div>
-        </section>
-
-        <section id="decrypt" class="page">
-            <div class="glass"><h3>DECRYPTOR</h3><h1 id="decrypt-text" style="text-align:center; color:var(--neon);">A7X_99</h1><button class="pro-btn" onclick="startDecrypt()">START_DECRYPT</button></div>
-        </section>
-
-        <section id="compiler" class="page">
-            <div class="glass"><h3>CODE_ACADEMY</h3><textarea id="edu-code" class="pro-input" placeholder="Write code here..."></textarea><button class="pro-btn" onclick="checkSyntax()">ANALYZE</button><p id="edu-status"></p></div>
-        </section>
-
-        <section id="logic" class="page">
-            <div class="glass"><h3>LOGIC_SIMULATOR</h3>
-                <div style="display:flex; justify-content:space-around; align-items:center; margin:20px 0;">
-                    <button class="gate-btn" id="gate-a" onclick="toggleGate('a')">0</button> [AND] 
-                    <button class="gate-btn" id="gate-b" onclick="toggleGate('b')">0</button> = 
-                    <button id="gate-out" class="gate-btn">0</button>
+            <section class="panel terminal-window">
+                <div id="terminal-output">
+                    > Initializing Aryan OS Core...<br>
+                    > Bypassing Patna City Central Firewall...<br>
+                    > System Ready.
                 </div>
-            </div>
-        </section>
+                <div class="input-area">
+                    <span>$</span>
+                    <input type="text" id="terminal-input" placeholder="Enter Command...">
+                </div>
+            </section>
 
-        <section id="notes" class="page">
-            <div class="glass"><h3>SECURE_VAULT</h3><textarea id="note-area" class="pro-input" style="height:150px;"></textarea><button class="pro-btn" onclick="saveNote()">ENCRYPT_SAVE</button></div>
-        </section>
+            <section class="panel tools-grid">
+                <button class="tool-btn panic" onclick="triggerPanic()">PANIC MODE</button>
+                <button class="tool-btn" onclick="triggerCamera()">CAM BREACH</button>
+                <button class="tool-btn" onclick="triggerVoice()">VOICE HIJACK</button>
+                <button class="tool-btn" onclick="toggleFullScreen()">FULL SCREEN</button>
+            </section>
 
-        <section id="about" class="page">
-            <div class="glass"><h3>DEV_PROFILE</h3><p>Master: Aryan<br>Access: Level_10<br>Role: System Architect</p><button class="pro-btn" onclick="showPage('home')">HOME</button></div>
-        </section>
-    </main>
+            <section class="panel legacy-tools">
+                <button class="tool-btn" onclick="openLogic()">LOGIC GATES</button>
+                <button class="tool-btn" onclick="openCipher()">GHOST CIPHER</button>
+                <button class="tool-btn" onclick="openScanner()">DEEP SCAN</button>
+                <button class="tool-btn" onclick="openCompiler()">COMPILER</button>
+            </section>
+        </main>
 
-    <nav class="bottom-nav">
-        <button class="nav-item" onclick="showPage('home')"><ion-icon name="home"></ion-icon><span>HOME</span></button>
-        <button class="nav-item" onclick="showPage('terminal')"><ion-icon name="code-working"></ion-icon><span>EXEC</span></button>
-        <button class="nav-item" onclick="showPage('notes')"><ion-icon name="lock-closed"></ion-icon><span>VAULT</span></button>
-        <button class="nav-item" onclick="showPage('about')"><ion-icon name="person"></ion-icon><span>DEV</span></button>
-    </nav>
+        <div id="camera-overlay" class="hidden">
+            <div class="scan-line"></div>
+            <div class="cam-text">SCANNING BIOMETRICS...</div>
+        </div>
+        
+        <div id="panic-overlay" class="hidden">
+            <div class="crash-text">CRITICAL SYSTEM ERROR 0x007<br>ARYAN_OS HAS TAKEN CONTROL</div>
+        </div>
+    </div>
 
-    <audio id="beep-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
     <script src="script.js"></script>
 </body>
 </html>
