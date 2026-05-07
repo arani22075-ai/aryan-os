@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="verified_by_aryan_os_v8" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ARYAN OS v8.0 - MASTER HUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARYAN OS | PRO TOOLKIT</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <nav class="top-nav">
-        <a href="index.html" class="active">HOME</a>
-        <a href="ai.html">AI BRAIN</a>
-        <a href="tools.html">TOOLS</a>
-        <a href="security.html">SECURITY</a>
+<body onclick="initAudio()">
+    <nav class="glass-nav">
+        <h2 class="logo">ARYAN OS v12</h2>
+        <div id="clock">00:00:00</div>
     </nav>
-    <canvas id="matrix-bg"></canvas>
-    <div id="os-container">
-        <header>
-            <div class="logo">ARYAN OS <span>v8.0</span></div>
-            <div id="clock">00:00:00</div>
+
+    <div class="container">
+        <div class="hero-image">
+            
+        </div>
+
+        <header class="main-header">
+            <h1 class="glitch">TITANIUM TOOLKIT</h1>
+            <p class="status-text">STATUS: <span id="status-blink">ONLINE</span></p>
         </header>
-        <div id="projector-alert" class="hidden">TARGET: PATNA CITY CENTRAL SCHOOL</div>
-        <main class="grid-layout">
-            <section class="panel system-intel">
-                <h3>[1-6] LIVE INTEL</h3>
-                <p>IP: <span id="ip-addr">--</span></p>
-                <p>BATTERY: <span id="bat-level">--</span></p>
-                <p>DEVICE: <span id="dev-type">--</span></p>
-                <p>LOC: <span id="loc-trace">Patna, BR</span></p>
-                <p>STATUS: <span style="color:white">CONNECTED</span></p>
-            </section>
-            <section class="panel terminal-window">
-                <h3>[7-8] TERMINAL</h3>
-                <div id="terminal-output">> Root@Aryan_OS:~# system_init...</div>
-                <div class="input-line"><span>$</span><input type="text" id="terminal-input" placeholder="Enter cmd..."></div>
-            </section>
-        </main>
+
+        <div class="action-box">
+            <h3>--- USE TOOLS FROM HERE ---</h3>
+            <div class="tool-grid">
+                <a href="tools.html" class="big-btn" onclick="playClick()">⚙️ OPEN ELITE TOOLS</a>
+                <a href="ai.html" class="big-btn" onclick="playClick()">🧠 NEURAL INTERFACE</a>
+                <a href="security.html" class="big-btn" onclick="playClick()">🛡️ GHOST SECURITY</a>
+            </div>
+        </div>
+
+        <section class="card stats-preview">
+            <div class="card-title">LIVE SYSTEM TRACKER</div>
+            <div class="stat">IP ADDR: <span id="ip-addr">SCANNING...</span></div>
+            <div class="stat">BATTERY: <span id="bat-level">--%</span></div>
+            <div class="stat">NETWORK: <span style="color:#00ff41">ENCRYPTED</span></div>
+        </section>
+
+        <section class="card about-section">
+            <div class="card-title">SYSTEM DESCRIPTION</div>
+            <p>Welcome to **Aryan OS Titanium**. This platform is a multi-purpose utility hub designed for:</p>
+            <ul>
+                <li>✅ **Cyber Tools:** WiFi QR Gen & Password Auditing.</li>
+                <li>✅ **Neural AI:** Deep-voice AI interaction system.</li>
+                <li>✅ **Data Breach:** Checking security of email databases.</li>
+                <li>✅ **Encryption:** Secure Base64 and SHA encoding.</li>
+            </ul>
+            <p class="warning">AUTHORIZED ACCESS ONLY - ARYAN ROOT PRIVILEGE</p>
+        </section>
     </div>
+
+    <audio id="beep-sound" src="https://www.soundjay.com/buttons/sounds/button-29.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>
