@@ -3,31 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARYAN OS - TOOLS</title>
+    <title>ARYAN OS | ELITE TOOLS</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="top-nav">
-        <a href="index.html">HOME</a>
-        <a href="ai.html">AI BRAIN</a>
-        <a href="tools.html" class="active">TOOLS</a>
-        <a href="security.html">SECURITY</a>
+    <nav class="glass-nav">
+        <a href="index.html">CORE</a>
+        <a href="ai.html">NEURAL</a>
+        <a href="tools.html" class="active">ELITE LAB</a>
+        <div class="more-menu" onclick="toggleMenu()">⋮</div>
     </nav>
-    <div id="os-container" style="overflow-y:auto">
-        <h2 class="page-title">[11-14] SYSTEM TOOLS</h2>
-        <div class="panel">
-            <h3>GHOST CIPHER</h3>
-            <input type="text" id="cipher-input" placeholder="Msg to encrypt...">
-            <button class="tool-btn" onclick="encryptData()">ENCRYPT BASE64</button>
+
+    <div class="container scrollable">
+        <div class="card">
+            <div class="card-title">📶 WiFi QR GENERATOR</div>
+            <input type="text" id="wifi-name" class="modern-input" placeholder="WiFi Name (SSID)">
+            <input type="password" id="wifi-pass" class="modern-input" placeholder="WiFi Password">
+            <button class="glow-btn" onclick="genWiFiQR()">GENERATE QR DATA</button>
+            <div id="qr-res" class="terminal-mini" style="font-size:10px; margin-top:10px;"></div>
         </div>
-        <div class="panel">
-            <h3>LOGIC GATES / COMPILER</h3>
-            <button class="tool-btn" onclick="openLogic()">START SIMULATOR</button>
-            <button class="tool-btn" onclick="openCompiler()">CLOUD COMPILER</button>
+
+        <div class="card">
+            <div class="card-title">🛡️ PASSWORD AUDITOR</div>
+            <input type="password" id="check-pass" class="modern-input" placeholder="Test a password..." oninput="checkStrength()">
+            <div id="strength-meter" style="height:6px; background:#333; margin-top:8px; border-radius:10px; width:0%; transition:0.5s;"></div>
+            <div id="strength-text" style="font-size:11px; margin-top:5px; color:var(--main);">RESULT: --</div>
         </div>
-        <button class="tool-btn" onclick="startDeepScan()">[15] NETWORK SCANNER</button>
-        <div id="scan-results" style="font-size:0.8rem; color:#00ff41"></div>
+
+        <div class="card">
+            <div class="card-title">🔢 DATA TRANSLATOR</div>
+            <input type="text" id="data-input" class="modern-input" placeholder="Enter text to convert...">
+            <div style="display:flex; gap:10px;">
+                <button class="glow-btn" onclick="toBinary()">BINARY</button>
+                <button class="glow-btn" onclick="toHex()">HEX</button>
+            </div>
+            <div id="data-res" class="terminal-mini" style="word-break: break-all; margin-top:10px;"></div>
+        </div>
     </div>
+
+    <div id="side-menu" class="side-menu-hidden">
+        <h3>ACTION CENTER</h3>
+        <button onclick="toggleTheme()">🌓 CHANGE THEME</button>
+        <button onclick="showSpecs()">📱 DEVICE SPECS</button>
+        <button onclick="checkBreach()">🔍 BREACH CHECK</button>
+        <button onclick="toggleFullScreen()">📺 PROJECTOR MODE</button>
+        <button onclick="toggleMenu()" style="color:red;">✖ CLOSE</button>
+    </div>
+
+    <div id="msg-box" class="hidden"></div>
     <script src="script.js"></script>
 </body>
 </html>
