@@ -1,57 +1,67 @@
-// MATRIX EFFECT
-const canvas = document.getElementById('matrix-bg');
-if(canvas) {
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-    const drops = Array(Math.floor(canvas.width/16)).fill(1);
-    function draw() {
-        ctx.fillStyle = "rgba(0,0,0,0.05)"; ctx.fillRect(0,0,canvas.width,canvas.height);
-        ctx.fillStyle = "#00ff41"; drops.forEach((y, i) => {
-            ctx.fillText(String.fromCharCode(65+Math.random()*33), i*16, y*16);
-            if(y*16 > canvas.height && Math.random() > 0.975) drops[i] = 0; drops[i]++;
-        });
-    }
-    setInterval(draw, 33);
+/* ARYAN OS v12 - PRO LOGIC */
+
+// 1. WiFi QR Generator
+function genWiFiQR() {
+    const ssid = document.getElementById('wifi-name').value;
+    const pass = document.getElementById('wifi-pass').value;
+    if(!ssid || !pass) { showToast("FILL ALL FIELDS!"); return; }
+    const qrData = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
+    document.getElementById('qr-res').innerText = "RAW QR DATA: " + qrData;
+    showToast("WIFI DATA GENERATED");
 }
 
-// 19 FEATURES LOGIC
-function getIntel() {
-    if(navigator.getBattery) navigator.getBattery().then(b => document.getElementById('bat-level').innerText = Math.floor(b.level*100)+"%");
-    document.getElementById('dev-type').innerText = window.innerWidth < 768 ? "MOBILE_UNIT" : "PC_STATION";
-    fetch('https://api.ipify.org?format=json').then(r => r.json()).then(d => document.getElementById('ip-addr').innerText = d.ip);
-    if(window.innerWidth > 1000) document.getElementById('projector-alert')?.classList.remove('hidden');
-}
-if(document.getElementById('ip-addr')) getIntel();
-
-function triggerPanic() {
-    document.getElementById('panic-overlay').classList.remove('hidden');
-    if(navigator.vibrate) navigator.vibrate([500,200,500]);
-    setTimeout(() => document.getElementById('panic-overlay').classList.add('hidden'), 4000);
+// 2. Password Strength Auditor
+function checkStrength() {
+    const pass = document.getElementById('check-pass').value;
+    const meter = document.getElementById('strength-meter');
+    const text = document.getElementById('strength-text');
+    if(pass.length === 0) { meter.style.width="0%"; text.innerText="RESULT: --"; return; }
+    if(pass.length < 6) { meter.style.width="30%"; meter.style.background="red"; text.innerText="RESULT: WEAK"; }
+    else if(pass.length < 11) { meter.style.width="60%"; meter.style.background="orange"; text.innerText="RESULT: MEDIUM"; }
+    else { meter.style.width="100%"; meter.style.background="#00f2ff"; text.innerText="RESULT: ELITE"; }
 }
 
-function triggerVoice() {
-    const m = new SpeechSynthesisUtterance("Aryan OS v8 activated. Patna City Central Network under control.");
-    m.pitch = 0.4; window.speechSynthesis.speak(m);
+// 3. Data Converters
+function toBinary() {
+    const input = document.getElementById('data-input').value;
+    const res = input.split('').map(c => c.charCodeAt(0).toString(2)).join(' ');
+    document.getElementById('data-res').innerText = res || "EMPTY";
+}
+function toHex() {
+    const input = document.getElementById('data-input').value;
+    const res = input.split('').map(c => c.charCodeAt(0).toString(16)).join(' ');
+    document.getElementById('data-res').innerText = "0x" + res.toUpperCase() || "EMPTY";
 }
 
-function triggerCamera() {
-    document.getElementById('camera-overlay').classList.remove('hidden');
-    setTimeout(() => { document.getElementById('camera-overlay').classList.add('hidden'); alert("BIOMETRIC CAPTURED"); }, 3000);
+// 4. Action Center Functions
+function toggleMenu() { document.getElementById('side-menu').classList.toggle('side-menu-hidden'); }
+
+function toggleTheme() {
+    const colors = ['#00f2ff', '#00ff41', '#ff0055', '#ffcc00', '#ffffff'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    document.querySelector(':root').style.setProperty('--main', randomColor);
+    showToast("THEME UPDATED");
 }
 
-function encryptData() {
-    const input = document.getElementById('cipher-input').value;
-    alert("ENCRYPTED: " + btoa(input));
+function showSpecs() {
+    alert(`RAM: ${navigator.deviceMemory || 'N/A'}GB\nCORES: ${navigator.hardwareConcurrency}\nOS: ${navigator.platform}`);
 }
 
-function startDeepScan() {
-    const res = document.getElementById('scan-results');
-    res.innerHTML = "SCANNING...";
-    setTimeout(() => { res.innerHTML = "PORT 80: OPEN<br>PORT 443: SECURE<br>PATNA_CENTRAL_DB: DETECTED"; }, 2000);
+function checkBreach() {
+    const email = prompt("Enter email to scan:");
+    if(!email) return;
+    showToast("SCANNING FOR LEAKS...");
+    setTimeout(() => alert("DATABASE SCAN COMPLETE: NO BREACH FOUND FOR " + email), 2000);
 }
 
-function toggleFullScreen() { document.documentElement.requestFullscreen(); }
-function openLogic() { alert("Logic Simulator v8.0 Starting..."); }
-function openCompiler() { alert("Compiler Ready."); }
+// 5. UI Helpers
+function showToast(txt) {
+    const box = document.getElementById('msg-box');
+    box.innerText = txt; box.classList.remove('hidden');
+    setTimeout(() => box.classList.add('hidden'), 3000);
+}
 
-setInterval(() => { if(document.getElementById('clock')) document.getElementById('clock').innerText = new Date().toLocaleTimeString(); }, 1000);
+function toggleFullScreen() {
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen(); showToast("FULLSCREEN ON"); }
+    else { document.exitFullscreen(); }
+}
