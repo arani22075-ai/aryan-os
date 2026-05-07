@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARYAN OS - TOOLS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html">HOME</a>
+        <a href="ai.html">AI BRAIN</a>
+        <a href="tools.html" class="active">TOOLS</a>
+        <a href="security.html">SECURITY</a>
+    </nav>
+    <div id="os-container" style="overflow-y:auto">
+        <h2 class="page-title">[11-14] SYSTEM TOOLS</h2>
+        <div class="panel">
+            <h3>GHOST CIPHER</h3>
+            <input type="text" id="cipher-input" placeholder="Msg to encrypt...">
+            <button class="tool-btn" onclick="encryptData()">ENCRYPT BASE64</button>
+        </div>
+        <div class="panel">
+            <h3>LOGIC GATES / COMPILER</h3>
+            <button class="tool-btn" onclick="openLogic()">START SIMULATOR</button>
+            <button class="tool-btn" onclick="openCompiler()">CLOUD COMPILER</button>
+        </div>
+        <button class="tool-btn" onclick="startDeepScan()">[15] NETWORK SCANNER</button>
+        <div id="scan-results" style="font-size:0.8rem; color:#00ff41"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
