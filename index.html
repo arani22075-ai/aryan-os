@@ -1,76 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="verified_by_aryan_os_v7" />
-    
+    <meta name="google-site-verification" content="verified_by_aryan_os_v8" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ARYAN OS v7.0 - PATNA CITY CENTRAL</title>
+    <title>ARYAN OS v8.0 - MASTER HUB</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="top-nav">
+        <a href="index.html" class="active">HOME</a>
+        <a href="ai.html">AI BRAIN</a>
+        <a href="tools.html">TOOLS</a>
+        <a href="security.html">SECURITY</a>
+    </nav>
     <canvas id="matrix-bg"></canvas>
-
     <div id="os-container">
         <header>
-            <div class="logo">ARYAN OS <span>v7.0</span></div>
+            <div class="logo">ARYAN OS <span>v8.0</span></div>
             <div id="clock">00:00:00</div>
         </header>
-
-        <div id="projector-alert" class="hidden">
-            <div style="color: yellow; font-weight: bold; margin-bottom: 5px;">[!] PROJECTOR OUTPUT DETECTED</div>
-            <div class="glitch-text" style="font-size: 1.2rem; color: #ff0000;">TARGET: PATNA CITY CENTRAL SCHOOL</div>
-            <div class="sub-text" style="font-size: 0.8rem;">NETWORK: patnacitycentralschool | PIN: 800007</div>
-        </div>
-
-        <main id="main-grid">
-            <section class="panel system-info">
-                <h3 style="border-bottom: 1px solid #00ff41; margin-bottom: 10px;">SYSTEM INTEL</h3>
-                <div class="stat-item">IP: <span id="ip-addr" style="color: white;">Scanning...</span></div>
-                <div class="stat-item">BATTERY: <span id="bat-level" style="color: white;">--%</span></div>
-                <div class="stat-item">OS TYPE: <span id="dev-type" style="color: white;">Detecting...</span></div>
-                <div class="stat-item">LOC: <span id="loc-trace" style="color: white;">Patna, BR</span></div>
+        <div id="projector-alert" class="hidden">TARGET: PATNA CITY CENTRAL SCHOOL</div>
+        <main class="grid-layout">
+            <section class="panel system-intel">
+                <h3>[1-6] LIVE INTEL</h3>
+                <p>IP: <span id="ip-addr">--</span></p>
+                <p>BATTERY: <span id="bat-level">--</span></p>
+                <p>DEVICE: <span id="dev-type">--</span></p>
+                <p>LOC: <span id="loc-trace">Patna, BR</span></p>
+                <p>STATUS: <span style="color:white">CONNECTED</span></p>
             </section>
-
             <section class="panel terminal-window">
-                <div id="terminal-output" style="color: #00ff41; font-family: monospace;">
-                    > Initializing Aryan OS Core...<br>
-                    > Bypassing Patna City Central Firewall...<br>
-                    > Connection Secure.<br>
-                    > System Ready.
-                </div>
-                <div class="input-area">
-                    <span style="color: #00ff41;">$</span>
-                    <input type="text" id="terminal-input" placeholder="Type command..." style="background:transparent; border:none; color:white; outline:none; margin-left:5px; width:90%;">
-                </div>
-            </section>
-
-            <section class="panel tools-grid">
-                <button class="tool-btn panic" onclick="triggerPanic()">PANIC MODE</button>
-                <button class="tool-btn" onclick="triggerCamera()">CAM BREACH</button>
-                <button class="tool-btn" onclick="triggerVoice()">VOICE HIJACK</button>
-                <button class="tool-btn" onclick="toggleFullScreen()">FULL SCREEN</button>
-            </section>
-
-            <section class="panel legacy-tools" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
-                <button class="tool-btn" style="font-size: 0.7rem;" onclick="openLogic()">LOGIC GATES</button>
-                <button class="tool-btn" style="font-size: 0.7rem;" onclick="openCipher()">CIPHER</button>
-                <button class="tool-btn" style="font-size: 0.7rem;" onclick="openScanner()">SCANNER</button>
-                <button class="tool-btn" style="font-size: 0.7rem;" onclick="openCompiler()">COMPILER</button>
+                <h3>[7-8] TERMINAL</h3>
+                <div id="terminal-output">> Root@Aryan_OS:~# system_init...</div>
+                <div class="input-line"><span>$</span><input type="text" id="terminal-input" placeholder="Enter cmd..."></div>
             </section>
         </main>
-
-        <div id="camera-overlay" class="hidden">
-            <div class="scan-line"></div>
-            <div style="color: red; font-weight: bold; z-index: 10000;">CAPTURING BIOMETRICS...</div>
-        </div>
-        
-        <div id="panic-overlay" class="hidden">
-            <div class="crash-text" style="color: red; font-size: 2rem; font-weight: bold;">CRITICAL ERROR</div>
-            <div style="color: white;">SYSTEM HIJACKED BY ARYAN_OS</div>
-        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
